@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 正确位置：title block 在这里 -->
+    <title>{% block title %}YAT NAM{% endblock %} - Code × Taiko</title>
+
+    <!-- Tailwind CDN + 赛博配置加强版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg': '#0D0D0D',
+                        'surface': '#1A1A1B',
+                        'primary': '#B388FF',
+                        'primary-glow': '#D8B4FF',
+                        'text': '#E0E0E0',
+                        'text-muted': '#888888',
+                        'accent': '#9933FF',  // 更深的紫，用于渐变
+                    },
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            'from': { boxShadow: '0 0 20px rgba(179, 136, 255, 0.4)' },
+                            'to': { boxShadow: '0 0 40px rgba(179, 136, 255, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Inter:wght@400;500;600&display=swap">
+    <style>
+        body { background: #0D0D0D; color: #E0E0E0; min-height: 100vh; position: relative; }
+        .bg-gradient-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(179, 136, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(153, 51, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(179, 136, 255, 0.08) 0%, transparent 70%);
+            animation: pulse-slow 20s infinite;
+            z-index: -2;
+        }
+        .bg-base {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0F0F1A 0%, #0A0A12 50%, #12121E 100%);
+            z-index: -3;
+        }
+        .glass {
+            background: rgba(26, 26, 27, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(179, 136, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        .glow-text { text-shadow: 0 0 30px rgba(179, 136, 255, 0.9); }
+        .pixel-border { image-rendering: pixelated; border: 3px solid #D8B4FF; }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+
+    <!-- 深色底图 + 渐变光晕 -->
+    <div class="bg-base"></div>
+    <div class="bg-gradient-overlay"></div>
+
+<!-- 固定顶部导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-primary/30 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="/" class="text-3xl font-mono glow-text tracking-wider">YAT NAM</a>
+            <div class="flex items-center gap-8 text-lg">
+                <a href="{{ url_for('index') }}" class="hover:text-primary-glow transition">首页</a>
+                <a href="{{ url_for('archive.archive') }}" class="hover:text-primary-glow transition">内容目录</a>
+                <a href="{{ url_for('taiko_page') }}" class="hover:text-primary-glow transition">太鼓战绩</a>
+                <a href="{{ url_for('about') }}" class="hover:text-primary-glow transition">关于</a>
+
+                {% if current_user.is_authenticated %}
+                    <div class="flex items-center gap-6">
+                        <a href="{{ url_for('users.my_account') }}" class="hover:text-primary-glow transition font-medium">个人中心</a>
+                        <span class="text-text-muted text-sm">Hi, {{ current_user.username }}</span>
+                        {% if current_user.is_admin_user() %}
+                            <a href="{{ url_for('admin.dashboard') }}" class="px-5 py-2 bg-primary/20 border-2 border-primary rounded-lg hover:bg-primary/40 transition text-sm font-medium">后台管理</a>
+                        {% endif %}
+                        <a href="{{ url_for('users.logout') }}" class="text-sm px-5 py-2 border border-primary/50 rounded-lg hover:bg-primary/20 transition">退出</a>
+                    </div>
+                {% else %}
+                    <div class="flex items-center gap-4">
+                        <a href="{{ url_for('users.login') }}" class="px-5 py-2 border border-primary/50 rounded-lg bg-primary/10 hover:bg-primary/20 transition">登录</a>
+                        <a href="{{ url_for('users.register') }}" class="px-5 py-2 bg-primary/20 border-2 border-primary rounded-lg hover:bg-primary/40 transition font-medium">注册</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+            <!-- 搜索框 -->
+        <div class="max-w-4xl mx-auto px-6 mb-3">
+            <form action="{{ url_for('search') }}" class="flex gap-4">
+                <input type="text" name="q" placeholder="搜索文章..." class="flex-1 px-6 py-4 bg-surface/50 border border-primary/30 rounded-xl focus:border-primary-glow focus:outline-none text-lg">
+                <button type="submit" class="px-8 py-4 bg-primary/20 border-2 border-primary rounded-xl hover:bg-primary/40 transition text-lg">
+                    搜索
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- 主内容区：所有首页内容直接写在这里 -->
+    <main class="relative z-10 pt-28 pb-20">
+{#        <section class="min-h-screen flex items-center justify-center relative">#}
+{#            <div class="text-center z-10 px-6">#}
+{#                <h1 class="text-8xl md:text-9xl font-mono glow-text mb-8 tracking-wider">#}
+{#                    YAT NAM#}
+{#                </h1>#}
+{#                <p class="text-3xl md:text-5xl text-primary-glow mb-12 opacity-90">#}
+{#                    {{ site_subtitle }}#}
+{#                </p>#}
+{#                <div class="text-xl md:text-2xl text-text-muted space-y-4">#}
+{#                    <p>{{ site_description | safe }}</p>#}
+{#                    <p>同时也是太鼓达人段位挑战者</p>#}
+{#                    <p class="text-primary">当前目标：全曲虹满连</p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{##}
+{#        <!-- 个人介绍卡片 -->#}
+{#        <section class="max-w-4xl mx-auto px-6 -mt-32 mb-20 relative z-10">#}
+{#            <div class="glass rounded-2xl p-10 text-center border border-primary/30">#}
+{#                {% if current_user.is_authenticated and current_user.avatar %}#}
+{#                    <img src="{{ url_for('static', filename='uploads/avatar/' + current_user.avatar) }}"#}
+{#                         alt="头像" class="w-32 h-32 mx-auto mb-6 rounded-full object-cover border-4 border-primary/50">#}
+{#                {% else %}#}
+{#                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{ current_user.username or 'YatNam' }}"#}
+{#                         alt="头像" class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-primary/50">#}
+{#                {% endif %}#}
+{##}
+{#                <h2 class="text-3xl font-mono mb-4">Hi, 我是 {{ current_user.username or 'Yat Nam' }}</h2>#}
+{#                <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-8">#}
+{#                    {% if current_user.bio %}#}
+{#                        {{ current_user.bio|safe }}#}
+{#                    {% else %}#}
+{#                        后端开发者 · Flask 爱好者 · 爬虫研究者 · 太鼓达人玩家<br>#}
+{#                        这里记录我的技术成长与太鼓挑战历程#}
+{#                    {% endif %}#}
+{#                </p>#}
+{#                <div class="flex justify-center gap-8 text-3xl">#}
+{#                    <a href="https://github.com/yourname" target="_blank" class="hover:text-primary-glow transition">GitHub</a>#}
+{#                    <a href="https://space.bilibili.com/yourid" target="_blank" class="hover:text-primary-glow transition">Bilibili</a>#}
+{#                    <a href="mailto:your@email.com" class="hover:text-primary-glow transition">Email</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{##}
+{#        <!-- 最新技术笔记 -->#}
+{#        <section class="max-w-6xl mx-auto px-6 py-20">#}
+{#            <div class="flex justify-between items-center mb-12">#}
+{#                <h2 class="text-5xl font-mono glow-text">最新技术笔记</h2>#}
+{#                <a href="/blog" class="text-xl border-b-2 border-primary/50 hover:border-primary hover:text-primary-glow transition">#}
+{#                    查看全部 →#}
+{#                </a>#}
+{#            </div>#}
+{##}
+{#            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">#}
+{#                {% for post in latest_posts %}#}
+{#                <a href="{{ url_for('blog.post_detail', post_id=post.id) }}" class="block group">#}
+{#                    <div class="glass rounded-2xl p-8 h-full transition-all duration-500 hover:-translate-y-4 hover:border-primary/60">#}
+{#                        <div class="flex items-center gap-3 mb-4">#}
+{#                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">{{ post.category.value }}</span>#}
+{#                            <span class="text-text-muted text-sm">{{ post.created_at.strftime('%Y.%m.%d') }}</span>#}
+{#                        </div>#}
+{#                        <h3 class="text-2xl font-mono mb-4 group-hover:text-primary-glow transition">#}
+{#                            {{ post.title }}#}
+{#                        </h3>#}
+{#                        <p class="text-text-muted line-clamp-3">#}
+{#                            {{ post.summary or post.content|striptags|truncate(100) }}#}
+{#                        </p>#}
+{#                    </div>#}
+{#                </a>#}
+{#                {% else %}#}
+{#                <div class="col-span-3 text-center py-20">#}
+{#                    <p class="text-2xl text-text-muted mb-8">还没有文章</p>#}
+{#                    {% if current_user.is_authenticated %}#}
+{#                        <a href="/blog/write" class="inline-block px-8 py-4 border-2 border-primary rounded-xl hover:bg-primary/20 transition text-xl">#}
+{#                            写下你的第一篇技术笔记 →#}
+{#                        </a>#}
+{#                    {% else %}#}
+{#                        <a href="/users/login" class="inline-block px-8 py-4 border-2 border-primary rounded-xl hover:bg-primary/20 transition text-xl">#}
+{#                            登录后发布第一篇 →#}
+{#                        </a>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </section>#}
+{##}
+{#        <!-- 太鼓达人战绩墙 -->#}
+{#        {% if best_taiko %}#}
+{#        <section class="max-w-6xl mx-auto px-6 py-20">#}
+{#            <div class="flex justify-between items-center mb-12">#}
+{#                <h2 class="text-5xl font-mono glow-text">太鼓达人 • 最高战绩</h2>#}
+{#                <a href="/taiko" class="text-xl border-b-2 border-primary/50 hover:border-primary hover:text-primary-glow transition">#}
+{#                    查看全部战绩 →#}
+{#                </a>#}
+{#            </div>#}
+{##}
+{#            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">#}
+{#                {% for record in best_taiko %}#}
+{#                <div class="glass rounded-2xl p-8 text-center pixel-border transition-all hover:scale-105">#}
+{#                    <div class="text-6xl mb-4">#}
+{#                        {% if record.crown.value == '虹满连' %}Rainbow Crown#}
+{#                        {% elif record.crown.value == '金满连' %}Gold Crown#}
+{#                        {% elif record.crown.value == '银满连' %}Silver Crown#}
+{#                        {% else %}Clear Crown{% endif %}#}
+{#                    </div>#}
+{#                    <h3 class="text-2xl font-mono mb-3 text-primary-glow">{{ record.song_name }}</h3>#}
+{#                    <p class="text-4xl font-mono my-4">{{ "{:,}".format(record.score) }}</p>#}
+{#                    <p class="text-sm text-text-muted">#}
+{#                        {{ record.difficulty }} • {{ record.played_at.strftime('%Y.%m.%d') }}#}
+{#                    </p>#}
+{#                </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </section>#}
+{#        {% endif %}#}
+{% block content %}{% endblock %}
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="relative z-10 border-t border-primary/20 py-10 text-center text-text-muted">
+        <p class="mb-2">© {{ current_year }} Yat Nam • {{ site_title }} • {{ site_motto }}</p>
+        <p class="text-sm opacity-70">{{ footer_text }}</p>
+    </footer>
+</body>
+</html>

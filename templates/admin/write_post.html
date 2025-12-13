@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="glow-text">发布文章</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">标题</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">类别</label>
+                        <select name="category" class="form-control" required>
+                            <option value="TECH">技术（coding）</option>
+                            <option value="LIFE">生活（life）</option>
+                        </select>
+                    </div>
+                        <!-- 标题、分类、内容保持不变 -->
+
+                        <div class="mb-3">
+                            <label class="form-label text-white">上传图片（支持多张）</label>
+                            <input type="file" name="images" class="form-control" multiple accept="image/*">
+                            <p class="text-sm text-text-muted mt-2">上传后会自动嵌入文章末尾</p>
+                        </div>
+
+{#                        <button type="submit" class="btn btn-success">发布文章</button>#}
+                    <div class="mb-3">
+                        <label class="form-label">内容（支持 Markdown）</label>
+                        <textarea name="content" rows="15" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">发布文章</button>
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">取消</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

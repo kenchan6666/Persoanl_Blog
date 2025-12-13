@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}我的收藏{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 py-20">
+    <h1 class="text-5xl font-mono glow-text text-center mb-12">我的收藏</h1>
+
+    {% if current_user.favorites|length == 0 %}
+        <div class="text-center py-20">
+            <p class="text-2xl text-text-muted mb-8">还没有收藏任何内容</p>
+            <a href="{{ url_for('archive.archive') }}" class="inline-block px-8 py-4 border-2 border-primary rounded-xl hover:bg-primary/20 transition text-xl">
+                去浏览内容 →
+            </a>
+        </div>
+    {% else %}
+        <div class="space-y-12">
+            {% for fav in current_user.favorites|sort(attribute='created_at', reverse=True) %}
+                {% if fav.post %}
+                <div class="glass rounded-xl p-8 hover:border-primary transition">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="px-3 py-1 bg-primary/20 rounded-full text-sm mb-3 inline-block">{{ fav.post.category.value }}</span>
+                            <h3 class="text-3xl font-mono mb-3">
+                                <a href="{{ url_for('post_detail', post_id=fav.post.id) }}" class="hover:text-primary-glow">
+                                    {{ fav.post.title }}
+                                </a>
+                            </h3>
+                            <p class="text-text-muted mb-4">
+                                {{ fav.post.created_at.strftime('%Y.%m.%d') }}
+                            </p>
+                            <p class="line-clamp-3">{{ fav.post.content|striptags|truncate(200) }}</p>
+                        </div>
+                        <a href="{{ url_for('users.toggle_favorite', type='post', item_id=fav.post.id) }}" class="text-danger hover:text-red-400 transition">
+                            取消收藏
+                        </a>
+                    </div>
+                </div>
+                {% elif fav.taiko %}
+                <div class="glass rounded-xl p-8 text-center pixel-border hover:scale-105 transition">
+                    <h3 class="text-2xl font-mono mb-4 text-primary-glow">
+                        <a href="{{ url_for('taiko_detail', record_id=fav.taiko.id) }}" class="hover:text-primary-glow">
+                            {{ fav.taiko.name }}
+                        </a>
+                    </h3>
+                    {% if fav.taiko.main_category == '歌曲' and fav.taiko.score %}
+                        <p class="text-4xl font-mono my-4">{{ "{:,}".format(fav.taiko.score) }}</p>
+                    {% else %}
+                        <p class="text-3xl font-mono my-4 text-primary-glow">段位认证</p>
+                    {% endif %}
+                    <p class="text-text-muted">
+                        {% if fav.taiko.main_category == '歌曲' %}
+                            {{ fav.taiko.difficulty }} • {{ fav.taiko.crown.value }}
+                        {% else %}
+                            段位
+                        {% endif %}
+                        • {{ fav.taiko.played_at.strftime('%Y.%m.%d') }}
+                    </p>
+                    <a href="{{ url_for('users.toggle_favorite', type='taiko', item_id=fav.taiko.id) }}" class="mt-4 inline-block text-danger hover:text-red-400 transition">
+                        取消收藏
+                    </a>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

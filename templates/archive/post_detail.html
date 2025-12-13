@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-6 py-20">
+    <article class="glass rounded-2xl p-10 mb-12">
+        <h1 class="text-5xl font-mono glow-text mb-8">{{ post.title }}</h1>
+        <p class="text-text-muted mb-12">
+            {{ post.created_at.strftime('%Y.%m.%d') }} • {{ post.category.value }} • 作者：{{ post.author.username }}
+        </p>
+        <div class="prose prose-invert max-w-none text-lg leading-relaxed">
+            {{ post.content | markdown | safe }}
+        </div>
+    </article>
+
+    <!-- 评论区 -->
+    <div class="glass rounded-2xl p-10">
+        <h2 class="text-4xl font-mono glow-text mb-8">评论 ({{ post.comments.count() }})</h2>
+
+        {% if current_user.is_authenticated %}
+        <form method="POST" class="mb-12">
+            {{ comment_form.hidden_tag() }}
+            <div class="mb-6">
+                {{ comment_form.content(class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text", rows="5", placeholder="写下你的评论...") }}
+            </div>
+            <button type="submit" class="px-8 py-4 bg-primary/20 border-2 border-primary rounded-xl hover:bg-primary/40 transition text-xl">
+                发表评论
+            </button>
+        </form>
+        {% else %}
+        <p class="text-center text-text-muted mb-8">
+            <a href="{{ url_for('users.login') }}" class="text-primary-glow hover:underline">登录</a> 后才能评论
+        </p>
+        {% endif %}
+
+
+        <!-- 评论列表 -->
+        {% for comment in comments %}
+        <div class="flex gap-6 mb-8 pb-8 border-b border-primary/10 last:border-0">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/50 flex-shrink-0">
+                {% if comment.author.avatar %}
+                    <img src="{{ url_for('static', filename='uploads/avatar/' + comment.author.avatar) }}" alt="头像" class="w-full h-full object-cover">
+                {% else %}
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{ comment.author.username }}" alt="头像" class="w-full h-full object-cover">
+                {% endif %}
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="font-mono text-primary-glow">{{ comment.author.username }}</span>
+                    <span class="text-text-muted text-sm">{{ comment.created_at.strftime('%Y.%m.%d %H:%M') }}</span>
+                </div>
+                <p class="text-text leading-relaxed">{{ comment.content | safe }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-12">
+        <a href="{{ url_for('index') }}" class="text-xl text-primary-glow hover:underline">
+            ← 返回首页
+        </a>
+    </div>
+</div>
+{% endblock %}

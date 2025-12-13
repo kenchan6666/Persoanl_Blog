@@ -1,0 +1,78 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">仪表盘</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action active glow-text">文章管理</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="glow-text">编辑文章：{{ post.title }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label text-white">文章标题</label>
+                        <input type="text" name="title" class="form-control" value="{{ post.title }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-white">分类</label>
+                        <select name="category" class="form-control">
+                            <option value="TECH" {% if post.category.value == 'TECH' %}selected{% endif %}>技术</option>
+                            <option value="TAIKO" {% if post.category.value == 'TAIKO' %}selected{% endif %}>太鼓达人</option>
+                            <option value="LIFE" {% if post.category.value == 'LIFE' %}selected{% endif %}>生活</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-white">文章内容（支持 Markdown）</label>
+                        <textarea name="content" rows="15" class="form-control" required>{{ post.content }}</textarea>
+                    </div>
+
+{#                    <!-- 新上传图片 -->#}
+{#                    <div class="mb-3">#}
+{#                        <label class="form-label text-white">上传新图片（支持多张）</label>#}
+{#                        <input type="file" name="images" class="form-control" multiple accept="image/*">#}
+{#                        <p class="text-sm text-text-muted mt-2">新图片会追加到文章末尾</p>#}
+{#                    </div>#}
+
+                    <!-- 已上传图片预览 + 删除 -->
+                    {% if image_urls %}
+                    <div class="mb-6">
+                        <h4 class="text-white mb-4">当前文章图片（悬停显示删除）</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {% for url in image_urls %}
+                            <div class="relative group">
+                                <img src="{{ url }}" alt="文章图片" class="w-full h-48 object-cover rounded-lg border border-primary/30">
+{#                                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-lg">#}
+{#                                    <form method="POST" action="{{ url_for('admin.delete_image') }}">#}
+{#                                        <input type="hidden" name="image_url" value="{{ url }}">#}
+{#                                        <button type="submit" class="px-6 py-3 bg-red-600 border border-red-500 rounded-lg hover:bg-red-700 transition text-white font-medium">#}
+{#                                            删除图片#}
+{#                                        </button>#}
+{#                                    </form>#}
+{#                                </div>#}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary px-8">保存修改</button>
+                        <a href="{{ url_for('admin.manage_articles') }}" class="btn btn-secondary px-8">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

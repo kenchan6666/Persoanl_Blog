@@ -1,0 +1,112 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="glow-text">上传太鼓战绩</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">主类别</label>
+                        <select name="main_category" class="form-control" id="main_category" onchange="toggleSongFields()">
+                            <option value="DAN">段位</option>
+                            <option value="SONG">歌曲</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">名称（段位名或歌名）</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <!-- 只有歌曲才显示的字段 -->
+                    <div id="song_fields" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">子类别</label>
+                            <!-- 子类别 -->
+                            <select name="sub_category" class="form-control">
+                                <option value="BRUSH_SCORE">刷分</option>
+                                <option value="FULL_COMBO">全连</option>
+                                <option value="GOOD_OK">全良</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">难度</label>
+                            <!-- 难度 -->
+                            <select name="difficulty" class="form-control">
+                                <option value="鬼">鬼</option>
+                                <option value="裏鬼">裏鬼</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">分数</label>
+                            <input type="number" name="score" class="form-control">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">良 (Good)</label>
+                                <input type="number" name="good" class="form-control" value="0">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">可 (Ok)</label>
+                                <input type="number" name="ok" class="form-control" value="0">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">不可 (Bad)</label>
+                                <input type="number" name="bad" class="form-control" value="0">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">冠</label>
+                            <!-- 冠 -->
+                            <select name="crown" class="form-control">
+                                <option value="CLEAR">普通通关</option>
+                                <option value="SILVER_FC">银冠</option>
+                                <option value="GOLD_FC">金冠</option>
+                                <option value="RAINBOW_FC">虹冠</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">截图（可选）</label>
+                        <input type="file" name="screenshot" class="form-control" accept="image/*">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">说明（可选）</label>
+                        <textarea name="note" rows="4" class="form-control"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">上传战绩</button>
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">取消</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleSongFields() {
+    var main = document.getElementById('main_category').value;
+    document.getElementById('song_fields').style.display = main === 'SONG' ? 'block' : 'none';
+}
+// 页面加载时执行一次
+toggleSongFields();
+</script>
+{% endblock %}

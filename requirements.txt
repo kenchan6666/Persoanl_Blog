@@ -1,0 +1,9 @@
+Markdown~=3.10
+Flask~=3.1.2
+Flask-Login~=0.6.3
+WTForms~=3.2.1
+dotenv~=0.9.9
+python-dotenv~=1.2.1
+Werkzeug~=3.1.4
+MarkupSafe~=3.0.3
+SQLAlchemy~=2.0.45

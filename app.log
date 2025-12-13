@@ -1,0 +1,1220 @@
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1709, in _object_value_for_elem
+    return self._object_lookup[elem]  # type: ignore[return-value]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: '技术'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\app.py", line 123, in index
+    return render_template('index.html', user=user)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 127, in _render
+    app.update_template_context(context)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 530, in update_template_context
+    context.update(self.ensure_sync(func)())
+                   ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\app.py", line 111, in inject_global_vars
+    'latest_posts': Post.query.order_by(Post.created_at.desc()).limit(6).all(),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1774, in all
+    return self._allrows()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 548, in _allrows
+    rows = self._fetchall_impl()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1681, in _fetchall_impl
+    return self._real_result._fetchall_impl()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 2275, in _fetchall_impl
+    return list(self.iterator)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 220, in chunks
+    fetch = cursor._raw_all_rows()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 541, in _raw_all_rows
+    return [make_row(row) for row in rows]
+            ~~~~~~~~^^^^^
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1829, in process
+    value = self._object_value_for_elem(value)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1711, in _object_value_for_elem
+    raise LookupError(
+    ...<7 lines>...
+    ) from err
+LookupError: '技术' is not among the defined enum values. Enum name: category. Possible values: TECH, TAIKO, LIFE
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1709, in _object_value_for_elem
+    return self._object_lookup[elem]  # type: ignore[return-value]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: '技术'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\app.py", line 123, in index
+    return render_template('index.html', user=user)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 127, in _render
+    app.update_template_context(context)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 530, in update_template_context
+    context.update(self.ensure_sync(func)())
+                   ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\app.py", line 111, in inject_global_vars
+    'latest_posts': Post.query.order_by(Post.created_at.desc()).limit(6).all(),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1774, in all
+    return self._allrows()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 548, in _allrows
+    rows = self._fetchall_impl()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1681, in _fetchall_impl
+    return self._real_result._fetchall_impl()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 2275, in _fetchall_impl
+    return list(self.iterator)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 220, in chunks
+    fetch = cursor._raw_all_rows()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 541, in _raw_all_rows
+    return [make_row(row) for row in rows]
+            ~~~~~~~~^^^^^
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1829, in process
+    value = self._object_value_for_elem(value)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1711, in _object_value_for_elem
+    raise LookupError(
+    ...<7 lines>...
+    ) from err
+LookupError: '技术' is not among the defined enum values. Enum name: category. Possible values: TECH, TAIKO, LIFE
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1709, in _object_value_for_elem
+    return self._object_lookup[elem]  # type: ignore[return-value]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: '技术'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\app.py", line 123, in index
+    return render_template('index.html', user=user)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 127, in _render
+    app.update_template_context(context)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 530, in update_template_context
+    context.update(self.ensure_sync(func)())
+                   ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\app.py", line 111, in inject_global_vars
+    'latest_posts': Post.query.order_by(Post.created_at.desc()).limit(6).all(),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1774, in all
+    return self._allrows()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 548, in _allrows
+    rows = self._fetchall_impl()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1681, in _fetchall_impl
+    return self._real_result._fetchall_impl()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 2275, in _fetchall_impl
+    return list(self.iterator)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 220, in chunks
+    fetch = cursor._raw_all_rows()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 541, in _raw_all_rows
+    return [make_row(row) for row in rows]
+            ~~~~~~~~^^^^^
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1829, in process
+    value = self._object_value_for_elem(value)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1711, in _object_value_for_elem
+    raise LookupError(
+    ...<7 lines>...
+    ) from err
+LookupError: '技术' is not among the defined enum values. Enum name: category. Possible values: TECH, TAIKO, LIFE
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 267, in __init__
+    self.main_category = TaikoMainCategory(main_category)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'SONG' is not a valid TaikoMainCategory
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,  # 直接传中文字符串
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,  # 直接传中文字符串
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,  # 直接传中文字符串
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,  # 直接传中文字符串
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,  # 直接传中文字符串
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+Exception on /admin/add_taiko [POST]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 133, in add_taiko
+    record = TaikoRecord(
+        main_category=main_category,  # 直接传中文字符串
+    ...<4 lines>...
+        player=current_user
+    )
+  File "<string>", line 4, in __init__
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 596, in _initialize_instance
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\state.py", line 594, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\models.py", line 278, in __init__
+    self.sub_category = TaikoSubCategory(kwargs.get('sub_category', 'BRUSH_SCORE'))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 726, in __call__
+    return cls.__new__(cls, value)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\yat nam\AppData\Local\Programs\Python\Python313\Lib\enum.py", line 1203, in __new__
+    raise ve_exc
+ValueError: 'BRUSH_SCORE' is not a valid TaikoSubCategory
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+Exception on /archive/archive [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1709, in _object_value_for_elem
+    return self._object_lookup[elem]  # type: ignore[return-value]
+           ~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: '刷分'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\archive\views.py", line 30, in archive
+    return render_template('archive/archive.html', posts=posts.all(), records=records.all(), current_category=category)
+                                                                              ~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1774, in all
+    return self._allrows()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 548, in _allrows
+    rows = self._fetchall_impl()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 1681, in _fetchall_impl
+    return self._real_result._fetchall_impl()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 2275, in _fetchall_impl
+    return list(self.iterator)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 220, in chunks
+    fetch = cursor._raw_all_rows()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\engine\result.py", line 541, in _raw_all_rows
+    return [make_row(row) for row in rows]
+            ~~~~~~~~^^^^^
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__
+  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1829, in process
+    value = self._object_value_for_elem(value)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\sqlalchemy\sql\sqltypes.py", line 1711, in _object_value_for_elem
+    raise LookupError(
+    ...<7 lines>...
+    ) from err
+LookupError: '刷分' is not among the defined enum values. Enum name: taikosubcategory. Possible values: BRUSH_SCORE, FULL_COMBO, GOOD_OK
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User registered: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1

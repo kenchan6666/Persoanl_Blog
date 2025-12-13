@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}太鼓达人战绩{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 py-20">
+    <h1 class="text-6xl font-mono glow-text text-center mb-12">太鼓达人战绩</h1>
+
+    <!-- 筛选栏 -->
+    <div class="glass rounded-2xl p-8 mb-12 border border-primary/30 shadow-2xl">
+        <h2 class="text-3xl font-mono glow-text text-center mb-8">筛选战绩</h2>
+        <form method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">主类别</label>
+                <select name="main_category" class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text transition">
+                    <option value="">所有类型</option>
+                    <option value="段位" {% if request.args.get('main_category') == '段位' %}selected{% endif %}>段位</option>
+                    <option value="歌曲" {% if request.args.get('main_category') == '歌曲' %}selected{% endif %}>歌曲</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">子类别</label>
+                <select name="sub_category" class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text transition">
+                    <option value="">所有子类别</option>
+                    <option value="刷分" {% if request.args.get('sub_category') == '刷分' %}selected{% endif %}>刷分</option>
+                    <option value="全连" {% if request.args.get('sub_category') == '全连' %}selected{% endif %}>全连</option>
+                    <option value="全良" {% if request.args.get('sub_category') == '全良' %}selected{% endif %}>全良</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">难度</label>
+                <select name="difficulty" class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text transition">
+                    <option value="">所有难度</option>
+                    <option value="鬼" {% if request.args.get('difficulty') == '鬼' %}selected{% endif %}>鬼</option>
+                    <option value="裏鬼" {% if request.args.get('difficulty') == '裏鬼' %}selected{% endif %}>裏鬼</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">冠</label>
+                <select name="crown" class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text transition">
+                    <option value="">所有冠</option>
+                    <option value="普通通关" {% if request.args.get('crown') == '普通通关' %}selected{% endif %}>普通通关</option>
+                    <option value="银冠" {% if request.args.get('crown') == '银冠' %}selected{% endif %}>银冠</option>
+                    <option value="金冠" {% if request.args.get('crown') == '金冠' %}selected{% endif %}>金冠</option>
+                    <option value="虹冠" {% if request.args.get('crown') == '虹冠' %}selected{% endif %}>虹冠</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="text-center mt-6">
+            <button type="submit" formmethod="get" class="px-10 py-4 bg-gradient-to-r from-primary to-accent border-2 border-primary rounded-xl hover:from-primary-glow hover:to-accent hover:shadow-lg transition text-xl font-medium">
+                筛选
+            </button>
+            <a href="{{ url_for('taiko_page') }}" class="ml-4 text-primary-glow hover:underline text-lg">清空筛选</a>
+        </div>
+    </div>
+
+    <!-- 战绩列表 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for record in records %}
+        <a href="{{ url_for('taiko_detail', record_id=record.id) }}" class="block group">
+            <div class="glass rounded-2xl p-8 text-center pixel-border hover:scale-105 transition">
+                <h3 class="text-2xl font-mono mb-4 text-primary-glow group-hover:text-primary-glow">{{ record.name }}</h3>
+                {% if record.main_category == '歌曲' and record.score %}
+                    <p class="text-4xl font-mono my-4">{{ "{:,}".format(record.score) }}</p>
+                {% else %}
+                    <p class="text-3xl font-mono my-4 text-primary-glow">段位认证</p>
+                {% endif %}
+                <p class="text-sm text-text-muted">
+                    {% if record.main_category == '歌曲' %}
+                        {{ record.difficulty }} • {{ record.crown.value }} • {{ record.sub_category.value }}
+                    {% else %}
+                        段位
+                    {% endif %}
+                    • {{ record.played_at.strftime('%Y.%m.%d') }}
+                </p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

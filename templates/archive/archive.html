@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}内容目录{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 py-20">
+    <h1 class="text-5xl font-mono glow-text text-center mb-12">内容目录</h1>
+
+    <!-- 分类筛选 -->
+    <div class="text-center mb-12 space-x-4">
+        <a href="{{ url_for('archive.archive') }}" class="px-6 py-3 rounded-lg border-2 {% if not current_category %}border-primary bg-primary/20{% else %}border-primary/30{% endif %} hover:border-primary transition">
+            全部
+        </a>
+        <a href="{{ url_for('archive.archive', category='TECH') }}" class="px-6 py-3 rounded-lg border-2 {% if current_category == 'TECH' %}border-primary bg-primary/20{% else %}border-primary/30{% endif %} hover:border-primary transition">
+            技术
+        </a>
+        <a href="{{ url_for('archive.archive', category='LIFE') }}" class="px-6 py-3 rounded-lg border-2 {% if current_category == 'LIFE' %}border-primary bg-primary/20{% else %}border-primary/30{% endif %} hover:border-primary transition">
+            生活
+        </a>
+        <a href="{{ url_for('archive.archive', category='TAIKO') }}" class="px-6 py-3 rounded-lg border-2 {% if current_category == 'TAIKO' %}border-primary bg-primary/20{% else %}border-primary/30{% endif %} hover:border-primary transition">
+            太鼓
+        </a>
+    </div>
+
+    <!-- 文章列表 -->
+    {% if posts %}
+    <h2 class="text-4xl font-mono glow-text text-center mb-10">文章</h2>
+    <div class="space-y-8 mb-20">
+        {% for post in posts %}
+        <div class="glass rounded-xl p-8 hover:border-primary transition relative">
+            {% if post.is_pinned %}
+                <span class="badge bg-danger position-absolute top-2 start-2">置顶</span>
+            {% endif %}
+            <h3 class="text-3xl font-mono mb-3">
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="hover:text-primary-glow">
+                    {{ post.title }}
+                </a>
+            </h3>
+            <p class="text-text-muted mb-4">
+                {{ post.created_at.strftime('%Y.%m.%d') }} • {{ post.category.value }}
+            </p>
+            <p class="line-clamp-3">{{ post.content|striptags|truncate(200) }}</p>
+        <!-- 文章卡片底部 -->
+            <div class="mt-4">
+            {% if current_user.is_authenticated %}
+                {% set is_favorited = post.id in (current_user.favorites|map(attribute='post_id')|list) %}
+                <a href="{{ url_for('users.toggle_favorite', type='post', item_id=post.id) }}" class="mt-4 inline-block text-sm {% if is_favorited %}text-danger{% else %}text-primary-glow{% endif %} hover:underline">
+                    {% if is_favorited %}取消收藏{% else %}收藏这篇文章{% endif %}
+                </a>
+            {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- 太鼓战绩列表 -->
+    {% if records %}
+    <h2 class="text-4xl font-mono glow-text text-center mb-10">太鼓战绩</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 战绩卡片（archive.html 和 index.html 通用） -->
+        {% for record in records %}
+        <a href="{{ url_for('taiko_detail', record_id=record.id) }}" class="block group">
+            <div class="glass rounded-2xl p-8 text-center pixel-border hover:scale-105 transition">
+                <h3 class="text-2xl font-mono mb-4 text-primary-glow group-hover:text-primary-glow">{{ record.name }}</h3>
+                {% if record.main_category == 'SONG' and record.score %}
+                    <p class="text-4xl font-mono my-4">{{ "{:,}".format(record.score) }}</p>
+                {% else %}
+                    <p class="text-3xl font-mono my-4 text-primary-glow">段位认证</p>
+                {% endif %}
+                <p class="text-sm text-text-muted">
+                    {% if record.main_category == 'SONG' %}
+                        {{ record.difficulty }} • {{ record.crown.value }}
+                    {% else %}
+                        段位
+                    {% endif %}
+                    • {{ record.played_at.strftime('%Y.%m.%d') }}
+                </p>
+            <!-- 战绩卡片底部 -->
+                <div class="mt-4">
+                <!-- 太鼓战绩收藏按钮 -->
+                {% if current_user.is_authenticated %}
+                    {% set is_favorited = record.id in (current_user.favorites|map(attribute='taiko_id')|list) %}
+                    <a href="{{ url_for('users.toggle_favorite', type='taiko', item_id=record.id) }}" class="mt-4 inline-block text-sm {% if is_favorited %}text-danger{% else %}text-primary-glow{% endif %} hover:underline">
+                        {% if is_favorited %}取消收藏{% else %}收藏这首战绩{% endif %}
+                    </a>
+                {% endif %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

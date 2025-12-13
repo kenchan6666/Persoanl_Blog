@@ -1,0 +1,81 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <h4 class="glow-text">文章管理</h4>
+                <a href="{{ url_for('admin.write_post') }}" class="btn btn-success btn-sm">发布新文章</a>
+            </div>
+            <div class="card-body">
+                <!-- 筛选表单 -->
+                <form method="GET" class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <input type="date" name="start_date" class="form-control" value="{{ request.args.get('start_date') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" name="end_date" class="form-control" value="{{ request.args.get('end_date') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <select name="category" class="form-control">
+                                <option value="all">所有分类</option>
+                                <option value="TECH" {% if request.args.get('category') == 'TECH' %}selected{% endif %}>技术</option>
+                                <option value="LIFE" {% if request.args.get('category') == 'LIFE' %}selected{% endif %}>生活</option>
+                                <option value="TAIKO" {% if request.args.get('category') == 'TAIKO' %}selected{% endif %}>太鼓</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" name="q" class="form-control" placeholder="搜索标题/内容" value="{{ request.args.get('q') }}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">筛选</button>
+                </form>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>分类</th>
+                            <th>发布日期</th>
+                            <th>评论数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in posts %}
+                        <tr>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.category.value }}</td>
+                            <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ post.comments.count() }}</td>
+                            <td>
+                                <a href="{{ url_for('admin.edit_article', post_id=post.id) }}" class="btn btn-primary btn-sm me-2">编辑</a>
+                                <a href="{{ url_for('admin.article_comments', post_id=post.id) }}" class="btn btn-info btn-sm me-2">管理评论</a>
+                                <a href="{{ url_for('admin.pin_article', post_id=post.id) }}" class="btn btn-info btn-sm me-2">置顶</a>
+                                <form method="POST" action="{{ url_for('admin.delete_article', post_id=post.id) }}" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定删除？')">删除</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

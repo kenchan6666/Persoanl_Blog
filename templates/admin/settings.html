@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="glow-text">网站设置</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label text-white">网站标题</label>
+                        <input type="text" name="site_title" class="form-control" value="{{ settings.site_title }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">副标题</label>
+                        <input type="text" name="site_subtitle" class="form-control" value="{{ settings.site_subtitle }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">个人介绍（支持 HTML）</label>
+                        <textarea name="site_description" rows="6" class="form-control">{{ settings.site_description }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">座右铭</label>
+                        <input type="text" name="site_motto" class="form-control" value="{{ settings.site_motto }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">页脚文字</label>
+                        <input type="text" name="footer_text" class="form-control" value="{{ settings.footer_text }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">保存设置</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

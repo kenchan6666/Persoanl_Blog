@@ -1,0 +1,78 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action{% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="glow-text">管理后台仪表盘</h4>
+            </div>
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="text-4xl text-primary-glow">{{ user_count }}</h2>
+                        <p class="text-text-muted">注册用户</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="text-4xl text-primary-glow">{{ post_count }}</h2>
+                        <p class="text-text-muted">文章总数</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="text-4xl text-primary-glow">{{ taiko_count }}</h2>
+                        <p class="text-text-muted">太鼓战绩</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 置顶文章管理 -->
+    <div class="card mt-8">
+        <div class="card-header bg-primary text-white d-flex justify-content-between">
+            <h4 class="glow-text">置顶文章管理</h4>
+            <a href="{{ url_for('admin.pinned_posts') }}" class="btn btn-light btn-sm">查看全部置顶</a>
+        </div>
+        <div class="card-body">
+            {% if pinned_posts %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>分类</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in pinned_posts %}
+                    <tr>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.category.value }}</td>
+                        <td>
+                            <a href="{{ url_for('admin.pin_post', post_id=post.id) }}" class="btn btn-warning btn-sm">取消置顶</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-center text-text-muted">暂无置顶文章</p>
+            {% endif %}
+            <div class="text-center mt-4">
+                <a href="{{ url_for('admin.write_post') }}" class="btn btn-success">发布新文章并置顶</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="glow-text">内容管理</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>标题</th>
+                            <th>分类</th>
+                            <th>日期</th>
+                            <th>置顶</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for content in contents %}
+                        <tr>
+                            <td>
+                                {% if content.type == 'post' %}
+                                    <span class="badge bg-info">文章</span>
+                                {% else %}
+                                    <span class="badge bg-success">战绩</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ content.title }}</td>
+                            <td>{{ content.category }}</td>
+                            <td>{{ content.date.strftime('%Y-%m-%d') }}</td>
+                            <td>
+                                {% if content.is_pinned %}
+                                    <span class="badge bg-danger">置顶</span>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if content.type == 'post' %}
+                                    <a href="{{ url_for('admin.edit_article', post_id=content.id) }}" class="btn btn-primary btn-sm me-2">编辑</a>
+                                {% else %}
+                                    <!-- 战绩暂不编辑 -->
+                                {% endif %}
+                                <a href="{{ url_for('admin.pin_content', content_type=content.type, content_id=content.id) }}" class="btn {% if content.is_pinned %}btn-warning{% else %}btn-success{% endif %} btn-sm me-2">
+                                    {% if content.is_pinned %}取消置顶{% else %}置顶{% endif %}
+                                </a>
+                                <form method="POST" action="{{ url_for('admin.delete_content', content_type=content.type, content_id=content.id) }}" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定删除？')">删除</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}注册{% endblock %}
+
+{% block content %}
+<!-- 注册专用全屏背景（去掉首页英雄区内容） -->
+<div class="min-h-screen flex items-center justify-center relative">
+    <!-- 注册卡片（居中，毛玻璃效果） -->
+    <div class="glass rounded-2xl p-10 w-full max-w-md border border-primary/30 shadow-2xl">
+        <!-- 注册标题 -->
+        <div class="text-center mb-10">
+            <h1 class="text-5xl font-mono glow-text mb-4 tracking-wider">加入我们</h1>
+            <p class="text-xl text-text-muted">开始你的技术 + 太鼓之旅</p>
+        </div>
+
+        <!-- 注册表单 -->
+        <form method="POST" class="space-y-6">
+            {{ form.hidden_tag() }}
+
+            <!-- 用户名 -->
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">
+                    用户名
+                </label>
+                {{ form.username(class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text placeholder:text-text-muted/50 transition-all duration-300", placeholder="你的昵称") }}
+                {% if form.username.errors %}
+                    <p class="text-red-400 text-xs mt-1">{{ form.username.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <!-- 邮箱 -->
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">
+                    邮箱地址
+                </label>
+                {{ form.email(class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text placeholder:text-text-muted/50 transition-all duration-300", placeholder="your@example.com") }}
+                {% if form.email.errors %}
+                    <p class="text-red-400 text-xs mt-1">{{ form.email.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <!-- 密码 -->
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">
+                    密码
+                </label>
+                {{ form.password(class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text placeholder:text-text-muted/50 transition-all duration-300", placeholder="至少6位") }}
+                {% if form.password.errors %}
+                    <p class="text-red-400 text-xs mt-1">{{ form.password.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <!-- 确认密码 -->
+            <div>
+                <label class="block text-text-muted mb-2 text-sm font-medium">
+                    确认密码
+                </label>
+                {{ form.confirm_password(class="w-full px-4 py-3 bg-surface/50 border border-primary/30 rounded-lg focus:border-primary-glow focus:outline-none text-text placeholder:text-text-muted/50 transition-all duration-300", placeholder="再次输入密码") }}
+                {% if form.confirm_password.errors %}
+                    <p class="text-red-400 text-xs mt-1">{{ form.confirm_password.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <!-- 提交按钮 -->
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary to-accent border-2 border-primary rounded-xl hover:from-primary-glow hover:to-accent hover:shadow-lg hover:shadow-primary/25 transform hover:scale-[1.02] transition-all duration-300 text-xl font-medium">
+                立即注册
+            </button>
+        </form>
+
+        <!-- 分割线 -->
+        <div class="relative my-8">
+            <div class="absolute inset-0 flex items-center">
+                <span class="w-full border-t border-primary/20"></span>
+            </div>
+            <div class="relative flex justify-center text-sm">
+                <span class="px-4 bg-surface/80 text-text-muted">已有账号？登录</span>
+            </div>
+        </div>
+
+        <!-- 登录链接 -->
+        <div class="text-center">
+            <a href="{{ url_for('users.login') }}" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary/50 rounded-xl hover:border-primary hover:bg-primary/10 transition-all duration-300 text-text">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                </svg>
+                立即登录
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

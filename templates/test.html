@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:C="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            text-align: center;
+        }
+
+        /*Picture carousel*/
+        a{
+            list-style: none;
+        }
+        li{
+            list-style: none;
+        }
+        .lunbo{
+
+            width: 100%;
+        }
+        .content{
+            background-color: #FFFFFF;
+            left: 100px;
+            width: 1300px;
+            height: 300px;
+            margin: 0;
+            position: relative;
+
+        }
+
+        #item{
+            background-color: #FFFFFF;
+            width: 100%;
+            height: 100%;
+
+        }
+        .item{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+
+        }
+        .item.active{
+            opacity:1;
+        }
+        img{
+            background-color:rgba(0,0,0,0.4);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #btn-left{
+            width: 30px;
+            height: 69px;
+            font-size: 30px;
+            color: white;
+            background-color:rgba(0,0,0,0.4);
+            line-height: 69px;
+            padding-left:5px;
+            z-index: 10;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-60%);
+            cursor: pointer;
+            opacity: 0;
+        }
+        .lunbo:hover #btn-left{
+            opacity: 1;
+        }
+
+        #btn-right{
+            width: 26px;
+            height: 69px;
+            font-size: 30px;
+            color: white;
+            background-color:rgba(0,0,0,0.4);
+            line-height: 69px;
+            padding-left: 5px;
+            z-index: 10;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(-60%);
+        }
+        .lunbo:hover #btn-right{
+            opacity: 1;
+        }
+        #circle{
+            height: 20px;
+            display: flex;
+            position: absolute;
+            bottom: 35px;
+            right: 25px;
+        }
+        .circle{
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            border: 2px solid white;
+            background: rgba(0,0,0,0.4);
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        /*Login and register*/
+        .login-button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;}
+
+        .register-button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            right: 85px;
+            top: 10px;
+        }
+        .login-button:hover, .register-button:hover {
+            background-color: #004494;
+        }
+        /*side bar*/
+        h1 { color: #333; }
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #f6f6f6;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .navbar .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            background-color: #111;
+            padding: 10px;
+            margin-left: 20px;
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: width 0.3s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button class="openbtn" onclick="toggleNav()">☰ Menu</button>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+            <a href="/user/login">Main</a>
+            <a href="/user/login">My Pantry</a>
+            <a href="/user/login">Food Browser</a>
+            <a href="/user/login">Shopping List</a>
+            <a href="/user/login">Recipes</a>
+            <a href="/user/login">Save a Barcode</a>
+        </div>
+        <button class="login-button" onclick="location.href='/user/login'">Login</button>
+        <button class="register-button" onclick="location.href='/user/register'">Register</button>
+    </div>
+    <section class="hero is-white is-quaterheight">
+        <div class="lunbo">
+                <div class="content">
+                <ul id="item">
+                    <li class="item active">
+                        <a href="#"><img src="/static/img/image1.jpg" ></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/static/img/xxl_153123335.jpg" ></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/static/img/image3.webp" ></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/static/img/Screenshot_2024-03-04_104321_1048_644_64_s_c1.jpg" ></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/static/img/foods-that-never-expire-ftr.jpg" ></a>
+                    </li>
+                </ul>
+                <div id="btn-left"><</div>
+                <div id="btn-right">></div>
+                <ul id="circle">
+
+                    <li class="circle"></li>
+                    <li class="circle"></li>
+                    <li class="circle"></li>
+                    <li class="circle"></li>
+                    <li class="circle"></li>
+                </ul>
+                </div>
+            </div>
+        </section>
+    <section class="hero is-white is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Welcome to PantryPal <i class="fas fa-box-open"></i></h1>
+                <h2 class="subtitle">Organize your pantry with ease!</h2>
+                <h2 class="subtitle">We're aiming at reducing food waste and protecting the environment, giving acknowledgement on the
+        expiring date of the foods and providing recipes for you! :)</h2>
+            </div>
+        </div>
+    </section>
+    <section class="section is-medium" style="background-color: white;">
+        <div class="columns is-vcentered">
+            <div class="column is-half">
+                <figure class="image">
+                    <img src="/static/img/food3.jpg" alt="Your Pantry">
+                </figure>
+            </div>
+            <div class="column is-half">
+                <h2 class="title is-2">About us</h2>
+                <p class="subtitle">Start by planning your meals for the week and creating a shopping list to avoid buying
+                    unnecessary items. Store food correctly to extend its shelf life, and use leftovers creatively in new recipes. </p>
+                <a class="button is-primary" href="{{ url_for('about_us') }}">Find out more</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-4">
+                    <p class="title"><i class="fas fa-archive"></i> Inventory Management</p>
+                    <p>Keep track of your ingredients, expiry dates, and quantities.</p>
+                </div>
+                <div class="column is-4">
+                    <p class="title"><i class="fas fa-shopping-cart"></i> Shopping Lists</p>
+                    <p>Create and manage shopping lists directly from your pantry items.</p>
+                </div>
+                <div class="column is-4">
+                    <p class="title"><i class="fas fa-chart-line"></i> Analytics</p>
+                    <p>Gain insights into usage patterns and optimize your pantry organization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+       <script>
+    function toggleNav() {
+        var sidebar = document.getElementById("mySidebar");
+        var mainContent = document.getElementById("mainContent");
+
+        if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+            mainContent.style.marginLeft = "0";
+        } else {
+            sidebar.style.width = "250px";
+            mainContent.style.marginLeft = "250px";
+        }
+    }
+
+    </script>
+    <script>
+
+        window.onload=function(){
+        var items=document.getElementsByClassName("item");
+        var circles=document.getElementsByClassName("circle");
+        var leftBtn=document.getElementById("btn-left");
+        var rightBtn=document.getElementById("btn-right");
+        var content=document.querySelector('.content');
+        var index=0;
+        var timer=null;
+        //清除class
+        var clearclass=function(){
+            for(let i=0;i<items.length;i++){
+                items[i].className="item";
+                circles[i].className="circle";
+                circles[i].setAttribute("num",i);
+            }
+        }
+
+        function move(){
+            clearclass();
+            items[index].className="item active";
+            circles[index].className="circle white";
+        }
+
+        rightBtn.onclick=function(){
+            if(index<items.length-1){
+                index++;
+            }
+            else{
+                index=0;
+            }
+            move();
+        }
+
+        leftBtn.onclick=function(){
+            if(index<items.length){
+                index--;
+            }
+            else{
+                index=items.length-1;
+            }
+            move();
+        }
+
+        timer=setInterval(function(){
+            rightBtn.onclick();
+        },1500)
+
+        for(var i=0;i<circles.length;i++){
+            circles[i].addEventListener("click",function(){
+                var point_index=this.getAttribute("num");
+                index=point_index;
+                move();
+            })
+
+        }
+        content.onmouseover=function(){
+            clearInterval(timer);
+                timer=setInterval(function(){
+                    rightBtn.onclick();
+                },5000)
+        }
+        content.onmouseleave=function(){
+            clearInterval(timer);
+            timer=setInterval(function(){
+                rightBtn.onclick();
+            },1500)
+        }
+
+}
+</script>
+
+</body>
+</html>

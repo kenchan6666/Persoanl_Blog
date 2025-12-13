@@ -1,0 +1,69 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
+            <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
+            <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <h4 class="glow-text">《{{ post.title }}》评论管理</h4>
+                <a href="{{ url_for('admin.manage_articles') }}" class="btn btn-light btn-sm">返回文章列表</a>
+            </div>
+            <div class="card-body">
+                <p class="mb-6">共 {{ comments|length }} 条评论</p>
+                {% if comments %}
+                <div class="space-y-6">
+                    {% for comment in comments %}
+                    <div class="glass rounded-xl p-6 flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="font-mono text-primary-glow">{{ comment.author.username }}</span>
+                                <span class="text-text-muted text-sm">{{ comment.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                            </div>
+                            <p class="text-text leading-relaxed">{{ comment.content | safe }}</p>
+
+                            <!-- 管理员回复显示 -->
+                            {% if comment.reply %}
+                            <div class="glass rounded-xl p-4 mt-4 bg-primary/10 border border-primary/30">
+                                <p class="text-sm text-text-muted mb-2">管理员回复 • {{ comment.replied_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                                <p class="text-text">{{ comment.reply | safe }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="flex gap-2">
+{#                            <form method="POST" action="{{ url_for('admin.delete_comment', comment_id=comment.id) }}" style="display:inline;">#}
+{#                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定删除？')">删除</button>#}
+{#                            </form>#}
+
+                            <form method="POST" action="{{ url_for('admin.reply_comment', comment_id=comment.id) }}" class="mb-2">
+                                <textarea name="reply" rows="3" class="form-control text-sm" placeholder="写回复..."></textarea>
+                                <button type="submit" class="btn btn-primary btn-sm mt-2">发送回复</button>
+                            </form>
+
+                            <!-- 删除按钮 -->
+                            <form method="POST" action="{{ url_for('admin.delete_comment', comment_id=comment.id) }}">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定删除？')">删除</button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-text-muted py-8">暂无评论</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
