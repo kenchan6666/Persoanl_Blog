@@ -32,13 +32,19 @@
                             <option value="LIFE">生活（life）</option>
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">发布日期（可选，默认当天）</label>
+                      <input type="datetime-local" name="created_at" class="form-control">
+                    </div>
+
                         <!-- 标题、分类、内容保持不变 -->
 
-                        <div class="mb-3">
-                            <label class="form-label text-white">上传图片（支持多张）</label>
-                            <input type="file" name="images" class="form-control" multiple accept="image/*">
-                            <p class="text-sm text-text-muted mt-2">上传后会自动嵌入文章末尾</p>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">上传图片（支持多张）</label>
+                        <input type="file" name="images" class="form-control" multiple accept="image/*">
+                        <p class="text-sm text-text-muted mt-2">上传后会自动嵌入文章末尾</p>
+                    </div>
 
 {#                        <button type="submit" class="btn btn-success">发布文章</button>#}
                     <div class="mb-3">

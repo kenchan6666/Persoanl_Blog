@@ -3,11 +3,14 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
-            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">仪表盘</a>
-            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action active glow-text">文章管理</a>
-            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active glow-text">仪表盘</a>
+            <a href="{{ url_for('admin.view_users') }}" class="list-group-item list-group-item-action">用户管理</a>
             <a href="{{ url_for('admin.site_settings') }}" class="list-group-item list-group-item-action">网站设置</a>
             <a href="{{ url_for('admin.view_logs') }}" class="list-group-item list-group-item-action">系统日志</a>
+            <a href="{{ url_for('admin.write_post') }}" class="list-group-item list-group-item-action">发布文章</a>
+            <a href="{{ url_for('admin.add_taiko') }}" class="list-group-item list-group-item-action">上传战绩</a>
+            <a href="{{ url_for('admin.manage_contents') }}" class="list-group-item list-group-item-action">内容管理</a>
+            <a href="{{ url_for('admin.manage_articles') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.manage_articles' %}active glow-text{% endif %}">文章管理</a>
         </div>
     </div>
 
@@ -18,6 +21,7 @@
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="post_id" value="{{ post.id }}">
                     <div class="mb-3">
                         <label class="form-label text-white">文章标题</label>
                         <input type="text" name="title" class="form-control" value="{{ post.title }}" required>
@@ -37,6 +41,14 @@
                         <textarea name="content" rows="15" class="form-control" required>{{ post.content }}</textarea>
                     </div>
 
+
+                    <div class="mb-3">
+                      <label class="form-label text-white">发布日期（可选，默认不变）</label>
+                      <input type="datetime-local" name="created_at" class="form-control"
+                             value="{{ post.created_at.strftime('%Y-%m-%dT%H:%M') if post.created_at else '' }}">
+                    </div>
+
+
 {#                    <!-- 新上传图片 -->#}
 {#                    <div class="mb-3">#}
 {#                        <label class="form-label text-white">上传新图片（支持多张）</label>#}
@@ -44,27 +56,37 @@
 {#                        <p class="text-sm text-text-muted mt-2">新图片会追加到文章末尾</p>#}
 {#                    </div>#}
 
-                    <!-- 已上传图片预览 + 删除 -->
                     {% if image_urls %}
-                    <div class="mb-6">
-                        <h4 class="text-white mb-4">当前文章图片（悬停显示删除）</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            {% for url in image_urls %}
-                            <div class="relative group">
-                                <img src="{{ url }}" alt="文章图片" class="w-full h-48 object-cover rounded-lg border border-primary/30">
-{#                                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-lg">#}
-{#                                    <form method="POST" action="{{ url_for('admin.delete_image') }}">#}
-{#                                        <input type="hidden" name="image_url" value="{{ url }}">#}
-{#                                        <button type="submit" class="px-6 py-3 bg-red-600 border border-red-500 rounded-lg hover:bg-red-700 transition text-white font-medium">#}
-{#                                            删除图片#}
-{#                                        </button>#}
-{#                                    </form>#}
-{#                                </div>#}
-                            </div>
-                            {% endfor %}
+                    <div class="mb-3">
+                      <h5 class="text-white">当前文章图片</h5>
+                      <div class="row">
+                        {% for url in image_urls %}
+                        <div class="col-6 col-md-3 mb-3">
+                          <img src="{{ url }}" class="img-fluid rounded border">
+
+                          <!-- ✅ 独立删除：提交到 delete_image，传 image_url -->
+                          <button type="submit"
+                                  class="btn btn-danger btn-sm mt-2"
+                                  name="image_url"
+                                  value="{{ url }}"
+                                  formaction="{{ url_for('admin.delete_image') }}"
+                                  formmethod="POST"
+                                  onclick="return confirm('确定删除这张图片吗？')">
+                            删除图片
+                          </button>
                         </div>
+                        {% endfor %}
+                      </div>
                     </div>
                     {% endif %}
+
+
+                    <div class="mb-3">
+                      <label class="form-label text-white">追加新图片（多张）</label>
+                      <input type="file" name="new_images" class="form-control" multiple accept="image/*">
+                    </div>
+
+
 
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary px-8">保存修改</button>

@@ -1218,3 +1218,233 @@ User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
 User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
 User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
 User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+Exception on /admin/articles [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 405, in manage_articles
+    return render_template('admin/articles.html', posts=posts)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 1, in top-level template code
+    {% extends "admin/base.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\base.html", line 91, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 69, in block 'content'
+    <form method="POST" action="{{ url_for('admin.delete_article', post_id=post.id) }}" style="display:inline;">
+    
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin.delete_article' with values ['post_id']. Did you mean 'admin.edit_article' instead?
+Exception on /admin/articles [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 405, in manage_articles
+    return render_template('admin/articles.html', posts=posts)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 1, in top-level template code
+    {% extends "admin/base.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\base.html", line 91, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 69, in block 'content'
+    <form method="POST" action="{{ url_for('admin.delete_article', post_id=post.id) }}" style="display:inline;">
+    
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin.delete_article' with values ['post_id']. Did you mean 'admin.edit_article' instead?
+Exception on /admin/articles [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 405, in manage_articles
+    return render_template('admin/articles.html', posts=posts)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 1, in top-level template code
+    {% extends "admin/base.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\base.html", line 91, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 69, in block 'content'
+    <form method="POST" action="{{ url_for('admin.delete_article', post_id=post.id) }}" style="display:inline;">
+    
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin.delete_article' with values ['post_id']. Did you mean 'admin.edit_article' instead?
+Exception on /admin/articles [GET]
+Traceback (most recent call last):
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\admin\views.py", line 405, in manage_articles
+    return render_template('admin/articles.html', posts=posts)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 1, in top-level template code
+    {% extends "admin/base.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\base.html", line 91, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\templates\admin\articles.html", line 69, in block 'content'
+    <form method="POST" action="{{ url_for('admin.delete_article', post_id=post.id) }}" style="display:inline;">
+    
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "C:\Users\yat nam\PycharmProjects\Persoanl_Blog\.venv\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin.delete_article' with values ['post_id']. Did you mean 'admin.edit_article' instead?
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged in: 2443939219@qq.com (username: yyy), IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged out: 2443939219@qq.com, IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged in: ynchanhk@gmail.com (username: yatnam), IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1
+User logged out: ynchanhk@gmail.com, IP: 127.0.0.1

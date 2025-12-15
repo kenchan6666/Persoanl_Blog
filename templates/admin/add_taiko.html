@@ -82,11 +82,20 @@
                             </select>
                         </div>
                     </div>
+                    <div class="mb-3">
+                      <label class="form-label">日期（可选，默认当天）</label>
+                      <input type="datetime-local" name="played_at" class="form-control">
+                    </div>
 
                     <div class="mb-3">
-                        <label class="form-label">截图（可选）</label>
-                        <input type="file" name="screenshot" class="form-control" accept="image/*">
+                      <label class="form-label">截图（可选，支持多张）</label>
+                      <input type="file" name="screenshots" class="form-control" multiple accept="image/*">
                     </div>
+
+{#                    <div class="mb-3">#}
+{#                        <label class="form-label">截图（可选）</label>#}
+{#                        <input type="file" name="screenshot" class="form-control" accept="image/*">#}
+{#                    </div>#}
 
                     <div class="mb-3">
                         <label class="form-label">说明（可选）</label>

@@ -216,6 +216,21 @@ class Post(db.Model):
     def __str__(self):
         return self.title
 
+    images = db.relationship(
+        "PostImage",
+        backref="post",
+        lazy="dynamic",
+        cascade="all, delete-orphan"
+    )
+
+
+class PostImage(db.Model):
+    __tablename__ = "post_image"
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey("post.id"), nullable=False, index=True)
+    url = db.Column(db.String(300), nullable=False)  # /static/uploads/...
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 # ====================== 4. 太鼓达人成绩（完整版）======================
 from enum import Enum
@@ -235,6 +250,15 @@ class CrownType(enum.Enum):
     SILVER_FC = "SILVER_FC"
     GOLD_FC = "GOLD_FC"
     RAINBOW_FC = "RAINBOW_FC"
+
+
+class TaikoRecordImage(db.Model):
+    __tablename__ = "taiko_record_image"
+    id = db.Column(db.Integer, primary_key=True)
+    taiko_record_id = db.Column(db.Integer, db.ForeignKey("taiko_record.id"), nullable=False, index=True)
+    url = db.Column(db.String(300), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class TaikoRecord(db.Model):
     __tablename__ = 'taiko_record'
@@ -327,6 +351,13 @@ class TaikoRecord(db.Model):
         else:
             crown_str = self.crown.value if self.crown else "未知"
             return f"{self.name} [{self.difficulty}] - {self.score:,} ({crown_str})"
+
+    images = db.relationship(
+        "TaikoRecordImage",
+        backref="taiko_record",
+        lazy="dynamic",
+        cascade="all, delete-orphan"
+    )
 
 
 # ====================== 5. 评论系统（完整版）======================
