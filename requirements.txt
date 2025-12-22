@@ -1,9 +1,11 @@
-Markdown~=3.10
 Flask~=3.1.2
 Flask-Login~=0.6.3
+Flask-SQLAlchemy~=3.1.1
+Flask-WTF~=1.2.1  # Flask-WTF 最新仍是 1.2.x 系列（1.2.2 已出，但 ~ =1.2.1 会允许到 1.2.x）
 WTForms~=3.2.1
-dotenv~=0.9.9
 python-dotenv~=1.2.1
 Werkzeug~=3.1.4
 MarkupSafe~=3.0.3
 SQLAlchemy~=2.0.45
+Markdown~=3.10
+gunicorn==23.0.0  # 这个保持精确版本，因为 23.x 是大版本
