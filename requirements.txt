@@ -7,5 +7,7 @@ python-dotenv~=1.2.1
 Werkzeug~=3.1.4
 MarkupSafe~=3.0.3
 SQLAlchemy~=2.0.45
+gunicorn
+Flask-SQLAlchemy
 Markdown~=3.10
 gunicorn==23.0.0  # 这个保持精确版本，因为 23.x 是大版本

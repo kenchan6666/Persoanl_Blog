@@ -85,7 +85,6 @@
                 <a href="{{ url_for('index') }}" class="hover:text-primary-glow transition">首页</a>
                 <a href="{{ url_for('archive.archive') }}" class="hover:text-primary-glow transition">内容目录</a>
                 <a href="{{ url_for('taiko_page') }}" class="hover:text-primary-glow transition">太鼓战绩</a>
-                <a href="{{ url_for('about') }}" class="hover:text-primary-glow transition">关于</a>
 
                 {% if current_user.is_authenticated %}
                     <div class="flex items-center gap-6">

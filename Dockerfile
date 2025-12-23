@@ -1,3 +1,5 @@
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
 # Dockerfile
 FROM python:3.11-slim
 
